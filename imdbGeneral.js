@@ -84,10 +84,10 @@ const puppeteer = require('puppeteer');
         fs = require('fs')
         fs.writeFile(`Season${i}.txt`, data, function (err) {
             if (err) return console.log(err);
-            console.log(i);
+            console.log(i-1);
           });
         
-        page.waitForNavigation({ waitUntil: 'networkidle0' })
+        
         
     }
   
