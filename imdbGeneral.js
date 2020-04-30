@@ -6,8 +6,8 @@ const puppeteer = require("puppeteer");
 
   //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
   //edit these, title comes from episode list pages eg https://www.imdb.com/title/tt0944947/episodes?season=1   |
-  const titleID = "tt0108778";                                                                                  
-  const numSeasons = 2;
+  const titleID = "tt0168366";                                                                                  
+  const numSeasons = 23;
   //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
   console.log("Script is now running, kick back and relax for a few minutes.");
   fs = require("fs");
@@ -98,7 +98,7 @@ const puppeteer = require("puppeteer");
 `{
   "episode": ${t.episode},
   "title": "${t.title}",
-  "rating": ${t.rating},
+  "rating": ${t.rating ? t.rating : 0},
   "votes": ${votefunc}
 }`
         );
@@ -113,6 +113,6 @@ const puppeteer = require("puppeteer");
       console.log(`Season ${i - 1} complete.`);
     });
   }
-  
+
   await browser.close();
 })();
