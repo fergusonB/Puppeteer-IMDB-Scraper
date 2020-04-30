@@ -108,15 +108,11 @@ const puppeteer = require("puppeteer");
     });
 
     
-    fs.appendFile(`out.json`, i!==numSeasons ? `"season${i}":${data},` : `"season${i}":${data}`, function (err) {
+    fs.appendFile(`out.json`, i!==numSeasons ? `"season${i}":${data},` : `"season${i}":${data}}`, function (err) {
       if (err) return console.log(err);
       console.log(`Season ${i - 1} complete.`);
     });
   }
-
-  fs.appendFile(`out.json`, `}`, function (err) {
-    if (err) return console.log(err);
-  });
-
+  
   await browser.close();
 })();
