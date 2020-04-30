@@ -1,5 +1,6 @@
 const puppeteer = require('puppeteer');
 
+console.log('Script is now running, kick back and relax for a few minutes.')
 (async () => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -84,7 +85,7 @@ const puppeteer = require('puppeteer');
         fs = require('fs')
         fs.writeFile(`Season${i}.txt`, data, function (err) {
             if (err) return console.log(err);
-            console.log(i-1);
+            console.log(`Season ${i-1} complete.`);
           });
         
         
