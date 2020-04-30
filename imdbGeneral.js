@@ -104,7 +104,7 @@ const puppeteer = require("puppeteer");
     });
 
     fs = require("fs");
-    fs.writeFile(`Season${i}.txt`, data, function (err) {
+    fs.writeFile(`Season${i}.json`, data, function (err) {
       if (err) return console.log(err);
       console.log(`Season ${i - 1} complete.`);
     });
