@@ -4,11 +4,11 @@ const puppeteer = require("puppeteer");
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-  //edit these, title comes from episode list pages eg https://www.imdb.com/title/tt0944947/episodes?season=1
-  const titleID = "tt0944947";
+  //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+  //edit these, title comes from episode list pages eg https://www.imdb.com/title/tt0944947/episodes?season=1   |
+  const titleID = "tt0944947";                                                                                  
   const numSeasons = 8;
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
   console.log("Script is now running, kick back and relax for a few minutes.");
   for (i = 1; i <= numSeasons; i++) {
     await page.goto(
