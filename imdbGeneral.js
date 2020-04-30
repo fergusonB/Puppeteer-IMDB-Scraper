@@ -1,6 +1,5 @@
 const puppeteer = require('puppeteer');
 
-console.log('Script is now running, kick back and relax for a few minutes.')
 (async () => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -10,7 +9,7 @@ console.log('Script is now running, kick back and relax for a few minutes.')
     const titleID = 'tt0944947'
     const numSeasons = 8
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
+    console.log('Script is now running, kick back and relax for a few minutes.')
     for (i=1;i<=numSeasons;i++){
         await page.goto(`https://www.imdb.com/title/${titleID}/episodes?season=${i}`,{waitUntil: 'networkidle2'});
 
