@@ -82,7 +82,7 @@ const puppeteer = require('puppeteer');
         })
         
         fs = require('fs')
-        fs.writeFile(`results/Season${i}.txt`, data, function (err) {
+        fs.writeFile(`Season${i}.txt`, data, function (err) {
             if (err) return console.log(err);
             console.log(i);
           });
