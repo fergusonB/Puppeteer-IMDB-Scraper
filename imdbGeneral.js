@@ -7,9 +7,13 @@ const puppeteer = require("puppeteer");
   //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
   //edit these, title comes from episode list pages eg https://www.imdb.com/title/tt0944947/episodes?season=1   |
   const titleID = "tt0108778";                                                                                  
-  const numSeasons = 10;
+  const numSeasons = 2;
   //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
   console.log("Script is now running, kick back and relax for a few minutes.");
+  fs = require("fs");
+  fs.writeFile(`out.json`, `{`, function (err) {
+    if (err) return console.log(err);
+  });
   for (i = 1; i <= numSeasons; i++) {
     await page.goto(
       `https://www.imdb.com/title/${titleID}/episodes?season=${i}`,
@@ -103,12 +107,16 @@ const puppeteer = require("puppeteer");
       return `[${formatted}]`;
     });
 
-    fs = require("fs");
-    fs.writeFile(`Season${i}.json`, data, function (err) {
+    
+    fs.appendFile(`out.json`, i!==numSeasons ? `"season${i}":${data},` : `"season${i}":${data}`, function (err) {
       if (err) return console.log(err);
       console.log(`Season ${i - 1} complete.`);
     });
   }
+
+  fs.appendFile(`out.json`, `}`, function (err) {
+    if (err) return console.log(err);
+  });
 
   await browser.close();
 })();
