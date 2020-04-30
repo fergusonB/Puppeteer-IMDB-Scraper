@@ -1,5 +1,7 @@
 **Installation**
-1. Run `npm i` to install Puppeteer, **OR** copy the imdbGeneral.js file to your Puppeteer folder.
+1. Clone the repository
+
+1. Run `npm install puppeteer` to install Puppeteer, **OR** copy the imdbGeneral.js file to your Puppeteer folder.
 
 **Running**
 1. Open imdbGeneral.js and change the `titleID` variable and the desired number of seasons `numSeasons`.
