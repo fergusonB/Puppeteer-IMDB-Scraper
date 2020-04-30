@@ -6,8 +6,8 @@ const puppeteer = require("puppeteer");
 
   //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
   //edit these, title comes from episode list pages eg https://www.imdb.com/title/tt0944947/episodes?season=1   |
-  const titleID = "tt0944947";                                                                                  
-  const numSeasons = 8;
+  const titleID = "tt0108778";                                                                                  
+  const numSeasons = 10;
   //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
   console.log("Script is now running, kick back and relax for a few minutes.");
   for (i = 1; i <= numSeasons; i++) {
@@ -91,11 +91,11 @@ const puppeteer = require("puppeteer");
           votefunc = 0;
         }
         formatted.push(
-          `{
-    "episode": ${t.episode},
-    "title": "${t.title}",
-    "rating": ${t.rating},
-    "votes": ${votefunc}
+`{
+  "episode": ${t.episode},
+  "title": "${t.title}",
+  "rating": ${t.rating},
+  "votes": ${votefunc}
 }`
         );
       }
