@@ -1,3 +1,4 @@
+// Edit Lines 10 and 11
 const puppeteer = require("puppeteer");
 
 (async () => {
@@ -6,8 +7,8 @@ const puppeteer = require("puppeteer");
 
   //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
   //edit these, title comes from episode list pages eg https://www.imdb.com/title/tt0944947/episodes?season=1   |
-  const titleID = "tt7826376";
-  const numSeasons = 1;
+  const titleID = "tt0108778";
+  const numSeasons = 10;
   //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
   console.log("Script is now running, kick back and relax for a few minutes.");
   fs = require("fs");
@@ -19,22 +20,14 @@ const puppeteer = require("puppeteer");
       `https://www.imdb.com/title/${titleID}/episodes?season=${i}`,
       { waitUntil: "networkidle2" }
     );
-
+    // scraping logic
     let data = await page.evaluate(() => {
-      class EpisodeData {
-        constructor(episode, title, rating, votes) {
-          this.episode = episode;
-          this.title = title;
-          this.rating = rating;
-          this.votes = votes;
-        }
-      }
+      // get number of elements
       let x = Array.from(
         document.querySelectorAll(
           '#episodes_content > div.clear > div.list.detail.eplist > [class*="list_item"]'
         )
       );
-
       // episode number
       let episode = [];
       for (ep = 1; ep <= x.length; ep++) {
@@ -82,6 +75,15 @@ const puppeteer = require("puppeteer");
         }
       }
 
+      // episode class, you can scrape more elements above if you like and add it here
+      class EpisodeData {
+        constructor(episode, title, rating, votes) {
+          this.episode = episode;
+          this.title = title;
+          this.rating = rating;
+          this.votes = votes;
+        }
+      }
       let formatted = [];
       let t;
       for (ep of episode) {
