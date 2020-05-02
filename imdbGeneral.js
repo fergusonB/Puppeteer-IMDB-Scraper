@@ -6,8 +6,8 @@ const puppeteer = require("puppeteer");
 
   //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
   //edit these, title comes from episode list pages eg https://www.imdb.com/title/tt0944947/episodes?season=1   |
-  const titleID = "tt0168366";                                                                                  
-  const numSeasons = 23;
+  const titleID = "tt7826376";
+  const numSeasons = 1;
   //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
   console.log("Script is now running, kick back and relax for a few minutes.");
   fs = require("fs");
@@ -76,7 +76,9 @@ const puppeteer = require("puppeteer");
       let votes = [];
       for (each of tmp) {
         if (votes !== undefined) {
-          votes.push(each.innerText);
+          votes.push(
+            each.innerText ? Number(each.innerText.match(/\d/g).join("")) : 0
+          );
         }
       }
 
@@ -86,32 +88,23 @@ const puppeteer = require("puppeteer");
         t = new EpisodeData(
           episode[ep - 1],
           title[ep - 1],
-          rating[ep - 1],
+          rating[ep - 1] ? Number(rating[ep - 1]) : 0,
           votes[ep - 1]
         );
-        try {
-          votefunc = Number(t.votes.match(/\d/g).join(""));
-        } catch (error) {
-          votefunc = 0;
-        }
-        formatted.push(
-`{
-  "episode": ${t.episode},
-  "title": "${t.title}",
-  "rating": ${t.rating ? t.rating : 0},
-  "votes": ${votefunc}
-}`
-        );
+        formatted.push(JSON.stringify(t));
       }
 
       return `[${formatted}]`;
     });
 
-    
-    fs.appendFile(`out.json`, i!==numSeasons ? `"season${i}":${data},` : `"season${i}":${data}}`, function (err) {
-      if (err) return console.log(err);
-      console.log(`Season ${i - 1} complete.`);
-    });
+    fs.appendFile(
+      `out.json`,
+      i !== numSeasons ? `"season${i}":${data},` : `"season${i}":${data}}`,
+      function (err) {
+        if (err) return console.log(err);
+        console.log(`Season ${i - 1} complete.`);
+      }
+    );
   }
 
   await browser.close();
