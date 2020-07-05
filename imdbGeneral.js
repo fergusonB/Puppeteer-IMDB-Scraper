@@ -1,7 +1,7 @@
 //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //edit these, title comes from episode list pages eg https://www.imdb.com/title/tt0944947/episodes?season=1   |
 const titleID = "tt0108778";
-const numSeasons = 10;
+const numSeasons = 1;
 //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 const puppeteer = require("puppeteer");
@@ -76,15 +76,7 @@ const puppeteer = require("puppeteer");
         }
       }
 
-      // episode class, you can scrape more elements above if you like and add it here
-      class EpisodeData {
-        constructor(episode, title, rating, votes) {
-          this.episode = episode;
-          this.title = title;
-          this.rating = rating;
-          this.votes = votes;
-        }
-      }
+
       let formatted = [];
       let t = {}
       for (ep of episode) {
