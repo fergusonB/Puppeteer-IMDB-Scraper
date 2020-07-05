@@ -1,15 +1,16 @@
-// Edit Lines 10 and 11
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//edit these, title comes from episode list pages eg https://www.imdb.com/title/tt0944947/episodes?season=1   |
+const titleID = "tt0108778";
+const numSeasons = 10;
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
 const puppeteer = require("puppeteer");
 
 (async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
-  //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-  //edit these, title comes from episode list pages eg https://www.imdb.com/title/tt0944947/episodes?season=1   |
-  const titleID = "tt0108778";
-  const numSeasons = 10;
-  //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
   console.log("Script is now running, kick back and relax for a few minutes.");
   fs = require("fs");
   fs.writeFile(`out.json`, `{`, function (err) {
@@ -85,14 +86,13 @@ const puppeteer = require("puppeteer");
         }
       }
       let formatted = [];
-      let t;
+      let t = {}
       for (ep of episode) {
-        t = new EpisodeData(
-          episode[ep - 1],
-          title[ep - 1],
-          rating[ep - 1] ? Number(rating[ep - 1]) : 0,
-          votes[ep - 1]
-        );
+        t.episode = episode[ep - 1],
+        t.title = title[ep - 1],
+        t.rating = rating[ep - 1] ? Number(rating[ep - 1]) : 0,
+        t.votes = votes[ep - 1]
+
         formatted.push(JSON.stringify(t));
       }
 
