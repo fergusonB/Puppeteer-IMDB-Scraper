@@ -1,7 +1,6 @@
 //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-//edit these, title comes from episode list pages eg https://www.imdb.com/title/tt0944947/episodes?season=1   |
+//edit this, title comes from imdb url e.g. https://www.imdb.com/title/tt0944947                
 const titleID = "tt0108778";
-const numSeasons = 1;
 //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 const puppeteer = require("puppeteer");
@@ -16,6 +15,13 @@ const puppeteer = require("puppeteer");
   fs.writeFile(`out.json`, `{`, function (err) {
     if (err) return console.log(err);
   });
+
+  await page.goto(`https://www.imdb.com/title/${titleID}/`)
+  const numSeasons = await page.evaluate(()=>{
+    let x = Number(document.querySelector('#title-episode-widget > div > div:nth-child(4) > a:nth-child(1)').text) || 1
+    return x
+  })
+
   for (i = 1; i <= numSeasons; i++) {
     await page.goto(
       `https://www.imdb.com/title/${titleID}/episodes?season=${i}`,
