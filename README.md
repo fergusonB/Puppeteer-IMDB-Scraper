@@ -3,8 +3,8 @@ NodeJS
 
 # Installation / Usage#
     git clone https://github.com/fergusonB/Puppeteer-IMDB-Scraper.git
-    npm install
     cd Puppeteer-IMDB-Scraper
+    npm install
     npm run get [title id]
 
 Example usage: 'npm run get tt0168366'
