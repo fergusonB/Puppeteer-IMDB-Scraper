@@ -1,0 +1,28 @@
+{
+  "name": "puppeteer-imdb-scraper",
+  "version": "1.0.0",
+  "description": "Puppeteer IMDB Scraper for use with https://ferguson.work/projects/imdb",
+  "main": "imdbGeneral.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "get": "node imdbGeneral.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fergusonB/Puppeteer-IMDB-Scraper.git"
+  },
+  "keywords": [
+    "puppeteer",
+    "imdb",
+    "scraper"
+  ],
+  "author": "Brenden Ferguson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fergusonB/Puppeteer-IMDB-Scraper/issues"
+  },
+  "homepage": "https://github.com/fergusonB/Puppeteer-IMDB-Scraper#readme",
+  "dependencies": {
+    "puppeteer": "^5.4.1"
+  }
+}

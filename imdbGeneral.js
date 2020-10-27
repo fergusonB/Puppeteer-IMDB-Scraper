@@ -1,7 +1,8 @@
-//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-//edit this, title comes from imdb url e.g. https://www.imdb.com/title/tt0944947                
-const titleID = "tt0108778";
-//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+const titleID =  process.argv[2]
+
+if (!titleID){
+  return console.log('Please provide a title ID')
+}
 
 const puppeteer = require("puppeteer");
 

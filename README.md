@@ -1,14 +1,12 @@
-**Requirements**
-1. Node.JS, npm
+# Requirements
+NodeJS
 
-**Installation**
-1. In an empty folder, run `npm install puppeteer` to install Puppeteer and place imdbGeneral.js in the folder, **OR** copy the imdbGeneral.js file to somewhere with Puppeteer installed
+# Installation / Usage#
+    git clone https://github.com/fergusonB/Puppeteer-IMDB-Scraper.git
+    npm install
+    cd Puppeteer-IMDB-Scraper
+    npm run get [title id]
 
-**Running**
-1. Open imdbGeneral.js and change the `titleID` variable.
+Example usage: 'npm run get tt0168366'
 
-2. Run the script with `node imdbGeneral.js`
-
-3. Results will be generated in out.json file.
-
-4. Copy contents of the out.json and visit https://ferguson.work/projects/imdb to visualize the data.
+**Now paste the contents of out.json into the tool at https://ferguson.work/projects/imdb**
