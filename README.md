@@ -1,5 +1,6 @@
 # Requirements
 NodeJS
+git
 
 # Installation / Usage#
     git clone https://github.com/fergusonB/Puppeteer-IMDB-Scraper.git
